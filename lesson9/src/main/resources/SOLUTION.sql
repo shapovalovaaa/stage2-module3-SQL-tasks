@@ -1,5 +1,5 @@
-SELECT student.* FROM student JOIN mark m ON student.id = m.student_id GROUP BY student.id HAVING AVG(mark) > 8;
+SELECT s.* FROM Student s JOIN Mark m ON m.student_id = s.id GROUP BY s.id HAVING(AVG(m.mark) > 8);
 
-SELECT id, name FROM student WHERE id IN (SELECT student_id FROM mark GROUP BY student_id HAVING MIN(mark) > 7);
+SELECT s.id, s.name FROM Student s JOIN Mark m ON m.student_id = s.id GROUP BY s.id HAVING(MIN(m.mark) > 7);
 
-SELECT id, name FROM student WHERE id IN (SELECT student_id FROM payment WHERE YEAR(payment_date) = 2019 GROUP BY student_id HAVING count(*) > 2);
+SELECT s.id, s.name FROM Student s JOIN Payment p ON p.student_id = s.id WHERE p.payment_date > '20190101' AND p.payment_date < '20191231' GROUP BY s.id HAVING(COUNT(p.id) > 2);

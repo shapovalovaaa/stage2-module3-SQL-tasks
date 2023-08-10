@@ -1,7 +1,7 @@
-SELECT * FROM payment JOIN paymenttype pt ON pt.id = payment.type_id WHERE pt.name LIKE 'MONTHLY';
+SELECT * FROM Payment LEFT JOIN Paymenttype ON Payment.type_id = Paymenttype.id WHERE Paymenttype.name LIKE 'MONTHLY';
 
-SELECT * FROM mark WHERE subject_id IN (SELECT id FROM subject WHERE name = 'Art');
+SELECT * FROM Mark LEFT JOIN Subject ON Mark.subject_id = Subject.id WHERE Subject.name LIKE 'Art';
 
-SELECT DISTINCT student.* FROM student JOIN payment p ON student.id = p.student_id JOIN paymenttype pt ON pt.id = p.type_id WHERE pt.name = 'WEEKLY';
+SELECT DISTINCT s.* FROM Student s LEFT JOIN Payment p ON s.id = p.student_id LEFT JOIN Paymenttype t ON p.type_id = t.id WHERE t.name LIKE 'WEEKLY';
 
-SELECT * FROM student JOIN mark m ON m.student_id = student.id JOIN subject s ON m.subject_id = s.id WHERE s.name LIKE 'Math';
+SELECT s.* FROM Student s JOIN Mark m ON m.student_id = s.id JOIN Subject sb ON sb.id = m.subject_id WHERE sb.name = 'Math';

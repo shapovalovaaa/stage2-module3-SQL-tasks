@@ -1,13 +1,13 @@
-SELECT * FROM payment WHERE amount >= 500;
+SELECT * FROM PAYMENT WHERE amount >= 500;
 
-SELECT * FROM student WHERE DATEADD(YEAR, -20, CURRENT_DATE) > birthday;
+SELECT * FROM Student WHERE birthday <= DATEADD(YEAR, -20, CURRENT_DATE());
 
-SELECT * FROM student WHERE groupnumber = 10 AND  DATEADD(YEAR, -20, CURRENT_DATE) < birthday;
+SELECT * FROM Student WHERE groupnumber = 10 AND birthday >= DATEADD(YEAR, -20, CURRENT_DATE());
 
-SELECT * FROM student WHERE name LIKE 'Mike%' OR groupnumber = 4 OR groupnumber = 5 OR groupnumber = 6;
+SELECT * FROM STUDENT AS s WHERE s.name LIKE 'MIke%' OR groupnumber IN ( 4, 5, 6);
 
-SELECT * FROM payment WHERE DATEADD(MONTH, -14, CURRENT_DATE) < payment_date;
+SELECT * FROM PAYMENT WHERE payment_date > DATEADD(MONTH, -8, '20221231');
 
-SELECT * FROM student WHERE name LIKE 'A%';
+SELECT * FROM STUDENT AS s WHERE s.name LIKE 'A%';
 
-SELECT * FROM student WHERE (name LIKE 'Roxi%' AND groupnumber = 4) OR (name LIKE 'Tallie%' AND groupnumber = 9);
+SELECT * FROM STUDENT AS s WHERE (s.name LIKE 'Roxi%' AND groupnumber = 4) OR (s.name LIKE 'Tallie%' AND groupnumber = 9);
